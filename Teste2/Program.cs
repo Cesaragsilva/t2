@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Teste2
 {
@@ -26,9 +27,10 @@ namespace Teste2
             this.Friends.Add(friend);
         }
 
-        public bool CanBeConnect(Friend friendC)
+        public bool CanBeConnect(Friend friend)
         {
-            return false;
+            return (Friends.Any(fs => fs.Email == friend.Email) ||
+                Friends.Where(fs => fs.Friends.Any(f => f.Email == friend.Email)).Any());
         }
 
         static void Main(string[] args)
@@ -39,6 +41,9 @@ namespace Teste2
 
             a.AddFriendship(b);
             b.AddFriendship(c);
+
+            Console.WriteLine(a.CanBeConnect(c));
+            Console.ReadKey();
         }
     }
 }
