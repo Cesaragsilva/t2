@@ -20,7 +20,7 @@ namespace Teste2
         {
             this.Email = email;
             this.Friends = new List<Friend>();
-        }
+        } 
 
         public void AddFriendship(Friend friend)
         {
