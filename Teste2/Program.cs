@@ -28,6 +28,13 @@ namespace Teste2
 
         public bool CanBeConnect(Friend friendC)
         {
+            foreach (var item in friendC.Friends)
+            {
+                if (this.Friends.Contains(item))
+                {
+                    return true;
+                }
+            }
             return false;
         }
 
@@ -39,6 +46,10 @@ namespace Teste2
 
             a.AddFriendship(b);
             b.AddFriendship(c);
+
+            c.AddFriendship(b);
+
+            Console.WriteLine(a.CanBeConnect(c));
         }
     }
 }
